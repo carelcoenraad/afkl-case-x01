@@ -1,3 +1,34 @@
-<!-- TODO: Create dashboard -->
-<h1>HTTP Trace:</h1>
-<pre>{{ trace | json }}</pre>
+<h1>API Statistics</h1>
+<hr />
+<h2>Requests</h2>
+<ul class="list-group">
+  <li class="list-group-item">
+    Total number of requests processed:
+    <span class="badge badge-primary badge-pill">{{ apiTraces.length }}</span>
+  </li>
+  <li class="list-group-item">
+    Total number of requests resulted in an OK response:
+    <span class="badge badge-success badge-pill">{{ okResponses.length }}</span>
+  </li>
+  <li class="list-group-item">
+    Total number of requests resulted in a 4xx response:
+    <span class="badge badge-warning badge-pill">{{ clientErrors.length }}</span>
+  </li>
+  <li class="list-group-item">
+    Total number of requests resulted in a 5xx response:
+    <span class="badge badge-danger badge-pill">{{ serverErrors.length }}</span>
+  </li>
+</ul>
+<hr />
+<h2>Responses</h2>
+<ul class="list-group">
+  <li class="list-group-item">
+    Average response time of all requests: <strong>{{ responseTimeAvg }}ms</strong>
+  </li>
+  <li class="list-group-item">
+    Min response time of all requests: <strong>{{ responseTimeMin }}ms</strong>
+  </li>
+  <li class="list-group-item">
+    Max response time of all requests: <strong>{{ responseTimeMax }}ms</strong>
+  </li>
+</ul>
