@@ -10,9 +10,9 @@ export class MetricsComponent implements OnInit {
   apiTraces = [];
   clientErrors = [];
   okResponses = [];
-  responseTimeAvg: number;
-  responseTimeMax: number;
-  responseTimeMin: number;
+  responseTimeAvg: number = 0;
+  responseTimeMax: number = 0;
+  responseTimeMin: number = 0;
   serverErrors = [];
 
   constructor(private metricsService: MetricsService) {}
@@ -27,9 +27,12 @@ export class MetricsComponent implements OnInit {
     const responseTimes = this.apiTraces.map(trace => trace.timeTaken);
     this.okResponses = statuses.filter(status => status === 200);
     this.clientErrors = statuses.filter(status => status >= 400 && status <= 499);
-    this.serverErrors = statuses.filter(status => status >= 500 && status <= 500);
-    this.responseTimeAvg = Math.floor(responseTimes.reduce((acc, cur) => acc + cur, 0) / responseTimes.length);
-    this.responseTimeMax = Math.max(...responseTimes);
-    this.responseTimeMin = Math.min(...responseTimes);
+    this.serverErrors = statuses.filter(status => status >= 500 && status <= 599);
+
+    if (responseTimes.length > 0) {
+      this.responseTimeAvg = Math.floor(responseTimes.reduce((acc, cur) => acc + cur, 0) / responseTimes.length);
+      this.responseTimeMax = Math.max(...responseTimes);
+      this.responseTimeMin = Math.min(...responseTimes);
+    }
   };
 }
