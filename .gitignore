@@ -33,3 +33,6 @@
 /**/jspm_packages
 /**/dist
 /devnet-core-ui/src/client/public
+
+# Other
+*.DS_Store

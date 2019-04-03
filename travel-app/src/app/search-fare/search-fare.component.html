@@ -1,0 +1,45 @@
+<form (ngSubmit)="onSubmit()" #searchForm="ngForm">
+  <fieldset>
+    <legend>Search fare offer</legend>
+    <div class="form-group row">
+      <label for="origin" class="col-sm-2 col-form-label">From</label>
+      <div class="col-sm-10">
+        <input
+          id="origin"
+          type="text"
+          name="origin"
+          class="form-control"
+          placeholder="Your origin"
+          required
+          [(ngModel)]="origin"
+          [ngbTypeahead]="search"
+          [inputFormatter]="formatter"
+          [resultFormatter]="formatter"
+        />
+      </div>
+    </div>
+    <div class="form-group row">
+      <label for="destination" class="col-sm-2 col-form-label">To</label>
+      <div class="col-sm-10">
+        <input
+          id="destination"
+          type="text"
+          name="destination"
+          class="form-control"
+          placeholder="Your destination"
+          required
+          [(ngModel)]="destination"
+          [ngbTypeahead]="search"
+          [inputFormatter]="formatter"
+          [resultFormatter]="formatter"
+        />
+      </div>
+    </div>
+    <button class="btn btn-primary" type="submit" [disabled]="!searchForm.form.valid || searching">Search</button>
+    <span class="ml-2" *ngIf="searching">searching...</span>
+  </fieldset>
+</form>
+<hr />
+<p *ngIf="this.fare">
+  Your fare from {{ fare.origin }} to {{ fare.destination }} is {{ fare.amount | currency: fare.currency }}
+</p>
