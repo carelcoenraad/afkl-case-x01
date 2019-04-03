@@ -4,6 +4,7 @@
 cd travel-app
 npm install
 npm run build
+# FIXME: This doesn't actually always add the new bundles
 cp -rf dist/travel-app/**/** ../src/main/resources/static
 cd -
 
