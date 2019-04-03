@@ -10,6 +10,7 @@
 # Packages
 *.jar
 !gradle/wrapper/gradle-wrapper.jar
+!libs/*.jar
 *.zip
 
 # Eclipse files
