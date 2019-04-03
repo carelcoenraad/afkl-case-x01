@@ -10,8 +10,6 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/api/airports")
-// TODO: Apply this only for local dev configuration
-@CrossOrigin(origins = "http://localhost:4200")
 public class AirportController {
 
     private final AirportService airportService;

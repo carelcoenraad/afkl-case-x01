@@ -8,8 +8,6 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/api/fares")
-// TODO: Apply this only for local dev configuration
-@CrossOrigin(origins = "http://localhost:4200")
 public class FaresController {
 
     private final FaresService faresService;
